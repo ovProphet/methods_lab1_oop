@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 enum key{TREE,BUSH};
@@ -12,6 +13,7 @@ public:
 	static plant* In(ifstream &ifst);
 	virtual void InData(ifstream &ifst) = 0;
 	virtual void Out(ofstream &ofst) = 0;
+	int consonant();
 };
 class tree : public plant
 {

@@ -127,6 +127,18 @@ plant* plant::In(ifstream &ifst)
 	pl->InData(ifst);
 	return pl;
 }
+int plant::consonant()
+{
+	int res = 0;
+	string alphabet = "BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz";
+	for(int i = 0; i < alphabet.length(); ++i)
+	{
+		int c = count(name.begin(),name.end(), alphabet[i]);
+		if (c > 0)
+			res += c;
+	}
+	return res;
+}
 void bush::Out(ofstream &ofst)
 {
 	ofst << "It is a Bush: its name is " << name << ", its blooming month is ";
@@ -169,8 +181,10 @@ void bush::Out(ofstream &ofst)
 		ofst << "December." << endl;
 		break;
 	}
+	ofst << "Its name has " << consonant() << " consonants.\n";
 }
 void tree::Out(ofstream &ofst)
 {
 	ofst << "It is a Tree: its name is " << name << ", its age is estimated to be " << age << " years." << endl;
+	ofst << "Its name has " << consonant() << " consonants.\n";
 }
