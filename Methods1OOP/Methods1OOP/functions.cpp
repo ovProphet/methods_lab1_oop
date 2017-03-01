@@ -174,3 +174,23 @@ void tree::Out(ofstream &ofst)
 {
 	ofst << "It is a Tree: its name is " << name << ", its age is estimated to be " << age << " years." << endl;
 }
+void tree::OutTree(ofstream &ofst,int& cnt)
+{
+	ofst << ++cnt << ": ";
+	Out(ofst);
+}
+
+void plant::OutTree(ofstream &ofst,int& cnt)
+{
+}
+void container::OutTree(ofstream &ofst)
+{
+	container* cur = this;
+	ofst << "Container contains " << len << " elements." << endl;
+	int counter = 0;
+	while(cur->pl != NULL)
+	{
+		cur->pl->OutTree(ofst,counter);
+		cur = cur->next;
+	}
+}

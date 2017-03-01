@@ -12,6 +12,7 @@ public:
 	static plant* In(ifstream &ifst);
 	virtual void InData(ifstream &ifst) = 0;
 	virtual void Out(ofstream &ofst) = 0;
+	virtual void OutTree(ofstream &ofst,int& cnt);
 };
 class tree : public plant
 {
@@ -20,6 +21,7 @@ private:
 public:
 	void InData(ifstream &ifst);
 	void Out(ofstream &ofst);
+	void OutTree(ofstream &ofst,int& cnt);
 	tree() {}
 };
 class bush : public plant
@@ -41,6 +43,7 @@ private:
 public:
 	void In(ifstream &ifst);
 	void Out(ofstream &ofst);
+	void OutTree(ofstream &ofst);
 	void Clear();
 	container();
 };
