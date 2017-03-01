@@ -1,10 +1,14 @@
-﻿Построение начато 17.02.2017 0:21:53.
+﻿Построение начато 01.03.2017 14:34:54.
      1>Проект "C:\Users\Валерий\Documents\Visual Studio 2010\Methods\Methods1OOP\Methods1OOP\Methods1OOP.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
          Создание "Debug\Methods1OOP.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt functions.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt client.cpp functions.cpp
          functions.cpp
+         Generating Code...
+         Compiling...
+         client.cpp
+         Generating Code...
        ManifestResourceCompile:
          Для всех выходных данных обновления не требуется.
        Link:
@@ -24,4 +28,4 @@
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:00.70
+Затраченное время: 00:00:01.57
