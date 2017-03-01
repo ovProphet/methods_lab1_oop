@@ -3,7 +3,7 @@
 #include <string>
 
 using namespace std;
-enum key{TREE,BUSH};
+enum key{TREE,BUSH,FLOWER};
 class plant
 {
 protected:
@@ -31,6 +31,16 @@ public:
 	void InData(ifstream &ifst);
 	void Out(ofstream &ofst);
 	bush() {}
+};
+class flower : public plant
+{
+private:
+	enum habitat{DOMESTIC, WILD, GARDEN, BED};
+	habitat type;
+public:
+	void InData(ifstream &ifst);
+	void Out(ofstream &ofst);
+	flower() {}
 };
 class container
 {
