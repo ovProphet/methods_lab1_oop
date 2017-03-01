@@ -4,14 +4,17 @@
 
 using namespace std;
 enum key{TREE,BUSH};
+enum hab{FOREST,FIELD,DESERT,TUNDRA,JUNGLE};
 class plant
 {
 protected:
 	string name;
+	hab habitat;
 public:
 	static plant* In(ifstream &ifst);
 	virtual void InData(ifstream &ifst) = 0;
 	virtual void Out(ofstream &ofst) = 0;
+	hab GetHabitat();
 };
 class tree : public plant
 {
@@ -42,5 +45,6 @@ public:
 	void In(ifstream &ifst);
 	void Out(ofstream &ofst);
 	void Clear();
+	void Sort();
 	container();
 };

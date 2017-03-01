@@ -63,6 +63,26 @@ void container::Out(ofstream &ofst)
 void tree::InData(ifstream &ifst)
 {
 	ifst >> name >> age;
+	int x;
+	ifst >> x;
+	switch(x)
+	{
+	case 0:
+		habitat = FOREST;
+		break;
+	case 1:
+		habitat = FIELD;
+		break;
+	case 2:
+		habitat = DESERT;
+		break;
+	case 3:
+		habitat = TUNDRA;
+		break;
+	case 4:
+		habitat = JUNGLE;
+		break;
+	}
 }
 void bush::InData(ifstream &ifst)
 {
@@ -105,6 +125,26 @@ void bush::InData(ifstream &ifst)
 		break;
 	case 11:
 		blooming = bush::DEC;
+		break;
+	}
+	int x;
+	ifst >> x;
+	switch(x)
+	{
+	case 0:
+		habitat = FOREST;
+		break;
+	case 1:
+		habitat = FIELD;
+		break;
+	case 2:
+		habitat = DESERT;
+		break;
+	case 3:
+		habitat = TUNDRA;
+		break;
+	case 4:
+		habitat = JUNGLE;
 		break;
 	}
 }
@@ -169,8 +209,74 @@ void bush::Out(ofstream &ofst)
 		ofst << "December." << endl;
 		break;
 	}
+	
+	switch(habitat)
+	{
+	case DESERT:
+		ofst << "Its natural habitat is desert." << endl;
+		break;
+	case TUNDRA:
+		ofst << "Its natural habitat is tundra." << endl;
+		break;
+	case FOREST:
+		ofst << "Its natural habitat is forest." << endl;
+		break;
+	case JUNGLE:
+		ofst << "Its natural habitat is jungle." << endl;
+		break;
+	case FIELD:
+		ofst << "Its natural habitat is field." << endl;
+		break;
+	}
 }
 void tree::Out(ofstream &ofst)
 {
 	ofst << "It is a Tree: its name is " << name << ", its age is estimated to be " << age << " years." << endl;
+	switch(habitat)
+	{
+	case DESERT:
+		ofst << "Its natural habitat is desert." << endl;
+		break;
+	case TUNDRA:
+		ofst << "Its natural habitat is tundra." << endl;
+		break;
+	case FOREST:
+		ofst << "Its natural habitat is forest." << endl;
+		break;
+	case JUNGLE:
+		ofst << "Its natural habitat is jungle." << endl;
+		break;
+	case FIELD:
+		ofst << "Its natural habitat is field." << endl;
+		break;
+	}
+}
+hab plant::GetHabitat()
+{
+	return habitat;
+}
+void container::Sort()
+{
+	container* start = this;
+	for(int i = 0; i < start->len; ++i)
+	{
+		bool changed = false;
+		container* cur = start;
+		while(cur->next->pl != NULL)
+		{
+			int i1 = cur->pl->GetHabitat();
+			int i2 = cur->next->pl->GetHabitat();
+			if(i1 > i2 )
+			{
+				plant* buf;
+				buf = cur->pl;
+				cur->pl = cur->next->pl;
+				cur->next->pl = buf;
+				changed = true;
+			}
+			cur=cur->next;
+		}
+		if(!changed)
+			break;
+	}
 }
