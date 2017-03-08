@@ -167,7 +167,6 @@ void flower::InData(ifstream &ifst)
 		type = flower::BED;
 		break;
 	}
-	int x;
 	ifst >> x;
 	switch(x)
 	{
