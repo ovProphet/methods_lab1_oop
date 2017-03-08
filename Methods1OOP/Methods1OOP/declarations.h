@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 enum key{TREE,BUSH};
@@ -16,6 +17,7 @@ public:
 	virtual void Out(ofstream &ofst) = 0;
 	virtual void OutTree(ofstream &ofst,int& cnt);
 	hab GetHabitat();
+	int consonant();
 };
 class tree : public plant
 {
