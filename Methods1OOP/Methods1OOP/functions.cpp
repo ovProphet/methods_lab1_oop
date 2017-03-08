@@ -148,6 +148,46 @@ void bush::InData(ifstream &ifst)
 		break;
 	}
 }
+void flower::InData(ifstream &ifst)
+{
+	int x;
+	ifst >> name >> x;
+	switch(x)
+	{
+	case 0:
+		type = flower::DOMESTIC;
+		break;
+	case 1:
+		type = flower::GARDEN;
+		break;
+	case 2:
+		type = flower::WILD;
+		break;
+	case 3:
+		type = flower::BED;
+		break;
+	}
+	int x;
+	ifst >> x;
+	switch(x)
+	{
+	case 0:
+		habitat = FOREST;
+		break;
+	case 1:
+		habitat = FIELD;
+		break;
+	case 2:
+		habitat = DESERT;
+		break;
+	case 3:
+		habitat = TUNDRA;
+		break;
+	case 4:
+		habitat = JUNGLE;
+		break;
+	}
+}
 plant* plant::In(ifstream &ifst)
 {
 	plant *pl;
@@ -160,6 +200,9 @@ plant* plant::In(ifstream &ifst)
 		break;
 	case 2:
 		pl = new bush;
+		break;
+	case 3:
+		pl = new flower;
 		break;
 	default:
 		return 0;
@@ -245,6 +288,7 @@ void bush::Out(ofstream &ofst)
 void tree::Out(ofstream &ofst)
 {
 	ofst << "It is a Tree: its name is " << name << ", its age is estimated to be " << age << " years." << endl;
+
 	switch(habitat)
 	{
 	case DESERT:
@@ -314,4 +358,25 @@ void container::Sort()
 		if(!changed)
 			break;
 	}
+}
+void flower::Out(ofstream &ofst)
+{
+	ofst << "It is a Flower: its name is " << name << ". ";
+	switch(type)
+	{
+	case flower::GARDEN:
+		ofst << "It's a garden flower." << endl;
+		break;
+	case flower::DOMESTIC:
+		ofst << "It's a domestic flower." << endl;
+		break;
+	case flower::WILD:
+		ofst << "It's a wild flower." << endl;
+		break;
+	case flower::BED:
+		ofst << "It's from a flower-bed." << endl;
+		break;
+	}
+	ofst << "Its name has " << consonant() << " consonants.\n";
+
 }

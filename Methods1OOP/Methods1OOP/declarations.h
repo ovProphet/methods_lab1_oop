@@ -4,8 +4,8 @@
 #include <algorithm>
 
 using namespace std;
-enum key{TREE,BUSH};
 enum hab{FOREST,FIELD,DESERT,TUNDRA,JUNGLE};
+enum key{TREE,BUSH,FLOWER};
 class plant
 {
 protected:
@@ -38,6 +38,16 @@ public:
 	void InData(ifstream &ifst);
 	void Out(ofstream &ofst);
 	bush() {}
+};
+class flower : public plant
+{
+private:
+	enum habita{DOMESTIC, WILD, GARDEN, BED};
+	habita type;
+public:
+	void InData(ifstream &ifst);
+	void Out(ofstream &ofst);
+	flower() {}
 };
 class container
 {
