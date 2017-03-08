@@ -20,6 +20,13 @@ int main(int argc, char* argv[])
 	ofst << "Filled container:" << endl;
 	c->Out(ofst);
 
+	ofst << "Elements of the first type only:" << endl;
+	c->OutTree(ofst);
+	
+	c->Sort();
+	ofst << "Sorted container:" << endl;
+	c->Out(ofst);
+
 	c->Clear();
 	ofst << "Empty container:" << endl;
 	c->Out(ofst);
