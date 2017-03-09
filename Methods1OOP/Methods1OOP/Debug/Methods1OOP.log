@@ -1,7 +1,7 @@
-﻿Построение начато 08.03.2017 23:42:08.
+﻿Построение начато 09.03.2017 14:26:37.
      1>Проект "C:\Users\Валерий\Documents\Visual Studio 2010\Methods\Methods1OOP\Methods1OOP\Methods1OOP.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
-         Обращение к "Debug\Methods1OOP.unsuccessfulbuild".
+         Создание "Debug\Methods1OOP.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt functions.cpp
          functions.cpp
@@ -25,4 +25,4 @@
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:01.26
+Затраченное время: 00:00:01.05
