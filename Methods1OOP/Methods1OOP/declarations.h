@@ -18,12 +18,14 @@ public:
 	virtual void OutTree(ofstream &ofst,int& cnt);
 	hab GetHabitat();
 	int consonant();
+	string GetName();
 };
 class tree : public plant
 {
 private:
 	long long age;
 public:
+	long long GetAge();
 	void InData(ifstream &ifst);
 	void Out(ofstream &ofst);
 	void OutTree(ofstream &ofst,int& cnt);
@@ -35,6 +37,7 @@ private:
 	enum month {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
 	month blooming;
 public:
+	month GetBlooming();
 	void InData(ifstream &ifst);
 	void Out(ofstream &ofst);
 	bush() {}
@@ -45,6 +48,7 @@ private:
 	enum habita{DOMESTIC, WILD, GARDEN, BED};
 	habita type;
 public:
+	habita GetType();
 	void InData(ifstream &ifst);
 	void Out(ofstream &ofst);
 	flower() {}
@@ -56,6 +60,9 @@ private:
 	plant *pl;
 	int len;
 public:
+	container* GetNext();
+	plant* GetPlant();
+	int GetLen();
 	void In(ifstream &ifst);
 	void Out(ofstream &ofst);
 	void OutTree(ofstream &ofst);

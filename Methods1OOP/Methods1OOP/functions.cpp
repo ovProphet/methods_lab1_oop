@@ -10,6 +10,18 @@ container::container()
 	pl = NULL;
 	len = 0;
 }
+container* container::GetNext()
+{
+	return next;
+}
+plant* container::GetPlant()
+{
+	return pl;
+}
+int container::GetLen()
+{
+	return len;
+}
 void container::Clear()
 {
 	container *prev = this, *cur = this;
@@ -221,6 +233,14 @@ int plant::consonant()
 	}
 	return res;
 }
+bush::month bush::GetBlooming()
+{
+	return blooming;
+}
+flower::habita flower::GetType()
+{
+	return type;
+}
 void bush::Out(ofstream &ofst)
 {
 	ofst << "It is a Bush: its name is " << name << ", its blooming month is ";
@@ -313,7 +333,10 @@ void tree::OutTree(ofstream &ofst,int& cnt)
 	ofst << ++cnt << ": ";
 	Out(ofst);
 }
-
+long long tree::GetAge()
+{
+	return age;
+}
 void plant::OutTree(ofstream &ofst,int& cnt)
 {
 }
@@ -332,6 +355,10 @@ void container::OutTree(ofstream &ofst)
 hab plant::GetHabitat()
 {
 	return habitat;
+}
+string plant::GetName()
+{
+	return name;
 }
 void container::Sort()
 {

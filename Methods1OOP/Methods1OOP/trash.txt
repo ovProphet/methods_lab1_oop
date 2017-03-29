@@ -1,0 +1,3 @@
+5: It is a Tree: its name is Za-Bor, its age is estimated to be 1337 years.
+Its natural habitat is jungle.
+Its name has 3 consonants.
