@@ -4,6 +4,38 @@
 using namespace std;
 
 class tree;
+void CheckValueArea(int value, int a, int b)
+{
+	if (!(a <= value && value <= b))
+	{
+		cout << "Incorrect input values." << endl;
+		exit(1);
+	}
+}
+void InputFileCheck(ifstream& ifst)
+{
+	if(!ifst)
+	{
+		cout << "Cannot open input file." << endl;
+		exit(1);
+	}
+}
+void InputValuesCheck(ifstream& ifst)
+{
+	if(ifst.fail())
+	{
+		cout << "Incorrect input values." << endl;
+		exit(1);
+	}
+}
+void OutputFileCheck(ofstream& ofst)
+{
+	if(!ofst)
+	{
+		cout << "Cannot open output file." << endl;
+		exit(1);
+	}
+}
 container::container()
 {
 	next = NULL;
@@ -42,6 +74,7 @@ void container::Clear()
 }
 void container::In(ifstream &ifst)
 {
+	InputFileCheck(ifst);
 	container *cur = this;
 	int cnt = 0;
 	while(!ifst.eof())
@@ -62,6 +95,7 @@ void container::In(ifstream &ifst)
 }
 void container::Out(ofstream &ofst)
 {
+	OutputFileCheck(ofst);
 	container* cur = this;
 	ofst << "Container contains " << len << " elements." << endl;
 	int counter = 0;
@@ -74,9 +108,18 @@ void container::Out(ofstream &ofst)
 }
 void tree::InData(ifstream &ifst)
 {
+	InputFileCheck(ifst);
 	ifst >> name >> age;
+	InputValuesCheck(ifst);
+	if(age < 0)
+	{
+		cout << "Incorrect input values." << endl;
+		exit(1);
+	}
 	int x;
 	ifst >> x;
+	InputValuesCheck(ifst);
+	CheckValueArea(x,0,4);
 	switch(x)
 	{
 	case 0:
@@ -98,8 +141,11 @@ void tree::InData(ifstream &ifst)
 }
 void bush::InData(ifstream &ifst)
 {
+	InputFileCheck(ifst);
 	int mon;
 	ifst >> name >> mon;
+	InputValuesCheck(ifst);
+	CheckValueArea(mon,0,11);
 	switch(mon)
 	{
 	case 0:
@@ -141,6 +187,8 @@ void bush::InData(ifstream &ifst)
 	}
 	int x;
 	ifst >> x;
+	InputValuesCheck(ifst);
+	CheckValueArea(x,0,4);
 	switch(x)
 	{
 	case 0:
@@ -162,8 +210,11 @@ void bush::InData(ifstream &ifst)
 }
 void flower::InData(ifstream &ifst)
 {
+	InputFileCheck(ifst);
 	int x;
 	ifst >> name >> x;
+	InputValuesCheck(ifst);
+	CheckValueArea(x,0,3);
 	switch(x)
 	{
 	case 0:
@@ -180,6 +231,8 @@ void flower::InData(ifstream &ifst)
 		break;
 	}
 	ifst >> x;
+	InputValuesCheck(ifst);
+	CheckValueArea(x,0,4);
 	switch(x)
 	{
 	case 0:
@@ -201,9 +254,16 @@ void flower::InData(ifstream &ifst)
 }
 plant* plant::In(ifstream &ifst)
 {
+	InputFileCheck(ifst);
 	plant *pl;
 	int k;
 	ifst >> k;
+	if(ifst.eof())
+	{
+		return NULL;
+	}
+	InputValuesCheck(ifst);
+	CheckValueArea(k,1,3);
 	switch(k)
 	{
 	case 1:
@@ -230,6 +290,11 @@ int plant::consonant()
 		int c = count(name.begin(),name.end(), alphabet[i]);
 		if (c > 0)
 			res += c;
+		if (res < 0)
+		{
+			cout << "Integer overflow." << endl;
+			exit(1);
+		}
 	}
 	return res;
 }
@@ -243,6 +308,7 @@ flower::habita flower::GetType()
 }
 void bush::Out(ofstream &ofst)
 {
+	OutputFileCheck(ofst);
 	ofst << "It is a Bush: its name is " << name << ", its blooming month is ";
 	switch(blooming)
 	{
@@ -306,6 +372,7 @@ void bush::Out(ofstream &ofst)
 }
 void tree::Out(ofstream &ofst)
 {
+	OutputFileCheck(ofst);
 	ofst << "It is a Tree: its name is " << name << ", its age is estimated to be " << age << " years." << endl;
 
 	switch(habitat)
@@ -330,6 +397,7 @@ void tree::Out(ofstream &ofst)
 }
 void tree::OutTree(ofstream &ofst,int& cnt)
 {
+	OutputFileCheck(ofst);
 	ofst << ++cnt << ": ";
 	Out(ofst);
 }
@@ -339,9 +407,11 @@ long long tree::GetAge()
 }
 void plant::OutTree(ofstream &ofst,int& cnt)
 {
+	OutputFileCheck(ofst);
 }
 void container::OutTree(ofstream &ofst)
 {
+	OutputFileCheck(ofst);
 	container* cur = this;
 	ofst << "Container contains " << len << " elements." << endl;
 	int counter = 0;
@@ -387,6 +457,7 @@ void container::Sort()
 }
 void flower::Out(ofstream &ofst)
 {
+	OutputFileCheck(ofst);
 	ofst << "It is a Flower: its name is " << name << ". ";
 	switch(type)
 	{

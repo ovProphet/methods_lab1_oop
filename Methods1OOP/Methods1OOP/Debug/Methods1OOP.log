@@ -1,13 +1,11 @@
-﻿Построение начато 29.03.2017 15:46:30.
+﻿Построение начато 05.04.2017 19:51:37.
      1>Проект "C:\Users\Валерий\Documents\Visual Studio 2010\Methods\Methods1OOP\Methods1OOP\Methods1OOP.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
          Создание "Debug\Methods1OOP.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\gtest\googletest-master\googletest\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt client.cpp tests.cpp
-         tests.cpp
-     1>c:\users\валерий\documents\visual studio 2010\methods\methods1oop\methods1oop\tests.cpp(185): warning C4101: 'first' : unreferenced local variable
-         client.cpp
-         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\gtest\googletest-master\googletest\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt functions.cpp
+         functions.cpp
+     1>c:\users\валерий\documents\visual studio 2010\methods\methods1oop\methods1oop\functions.cpp(288): warning C4018: '<' : signed/unsigned mismatch
        ManifestResourceCompile:
          Для всех выходных данных обновления не требуется.
        Link:
@@ -28,4 +26,4 @@
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:01.92
+Затраченное время: 00:00:00.96

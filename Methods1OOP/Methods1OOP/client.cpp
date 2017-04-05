@@ -4,7 +4,6 @@
 
 using namespace std;
 
-/*
 int main(int argc, char* argv[])
 {
 	if (argc != 3)
@@ -35,4 +34,4 @@ int main(int argc, char* argv[])
 
 	ofst<< "Stop" << endl;
 	return 0;
-}*/
+}

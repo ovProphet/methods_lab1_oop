@@ -144,13 +144,13 @@ TEST(consonant,all_consonants)
 	ofstream ofst("trash.txt");
 	plant* p = plant::In(ifstream("all_consonants.txt"));
 	EXPECT_EQ(p->consonant(),40);
-}
+}/*
 TEST(consonant,empty_string)
 {
 	ofstream ofst("trash.txt");
 	plant* p = plant::In(ifstream("empty_string.txt"));
 	EXPECT_EQ(p->consonant(),0);
-}
+}*/
 TEST(consonant,orchid)
 {
 	ofstream ofst("trash.txt");
@@ -440,11 +440,11 @@ TEST(trees_only,all)
 	tr->InData(ifst);
 	tr->OutTree(ofstream("trash.txt"),cnt);
 }
-
+/*
 int main(int argc, char* argv[])
 {
 	testing::InitGoogleTest(&argc, argv);
 	RUN_ALL_TESTS();
 	std::getchar();
 	return 0;
-}
+}*/
