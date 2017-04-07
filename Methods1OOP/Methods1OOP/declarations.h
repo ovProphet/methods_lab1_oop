@@ -4,20 +4,20 @@
 #include <algorithm>
 
 using namespace std;
-enum hab{FOREST,FIELD,DESERT,TUNDRA,JUNGLE};
-enum key{TREE,BUSH,FLOWER};
+enum hab{FOREST, FIELD, DESERT, TUNDRA, JUNGLE};
+enum key{TREE, BUSH, FLOWER};
 class plant
 {
 protected:
 	string name;
 	hab habitat;
 public:
-	static plant* In(ifstream &ifst);
-	virtual void InData(ifstream &ifst) = 0;
-	virtual void Out(ofstream &ofst) = 0;
-	virtual void OutTree(ofstream &ofst,int& cnt);
+	static plant* In(ifstream &inputFile);
+	virtual void InData(ifstream &inputFile) = 0;
+	virtual void Out(ofstream &outputFile) = 0;
+	virtual void OutTree(ofstream &outputFile, int& cnt);
 	hab GetHabitat();
-	int consonant();
+	int Consonant();
 	string GetName();
 };
 class tree : public plant
@@ -26,9 +26,9 @@ private:
 	long long age;
 public:
 	long long GetAge();
-	void InData(ifstream &ifst);
-	void Out(ofstream &ofst);
-	void OutTree(ofstream &ofst,int& cnt);
+	void InData(ifstream &inputFile);
+	void Out(ofstream &outputFile);
+	void OutTree(ofstream &outputFile, int& cnt);
 	tree() {}
 };
 class bush : public plant
@@ -38,8 +38,8 @@ private:
 	month blooming;
 public:
 	month GetBlooming();
-	void InData(ifstream &ifst);
-	void Out(ofstream &ofst);
+	void InData(ifstream &inputFile);
+	void Out(ofstream &outputFile);
 	bush() {}
 };
 class flower : public plant
@@ -49,8 +49,8 @@ private:
 	habita type;
 public:
 	habita GetType();
-	void InData(ifstream &ifst);
-	void Out(ofstream &ofst);
+	void InData(ifstream &inputFile);
+	void Out(ofstream &outputFile);
 	flower() {}
 };
 class container
@@ -58,14 +58,14 @@ class container
 private:
 	container *next;
 	plant *pl;
-	int len;
+	int length;
 public:
 	container* GetNext();
 	plant* GetPlant();
 	int GetLen();
-	void In(ifstream &ifst);
-	void Out(ofstream &ofst);
-	void OutTree(ofstream &ofst);
+	void In(ifstream &inputFile);
+	void Out(ofstream &outputFile);
+	void OutTree(ofstream &outputFile);
 	void Clear();
 	void Sort();
 	container();

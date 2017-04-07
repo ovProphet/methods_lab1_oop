@@ -55,9 +55,9 @@ TEST(clear_container,nonempty_container)
 
 TEST(sort_container, reverse_container)
 {
-	ifstream ifst("sort_reverse.txt");
+	ifstream inputFile("sort_reverse.txt");
 	container* c = new container,* first;
-	c->In(ifst);
+	c->In(inputFile);
 	first = c;
 	c->Sort();
 	EXPECT_TRUE(c->GetPlant()->GetName() == "tewte" || c->GetPlant()->GetName() == "Toomoo");
@@ -85,9 +85,9 @@ TEST(sort_container, reverse_container)
 }
 TEST(sort_container, sorted_container)
 {
-	ifstream ifst("sorted.txt");
+	ifstream inputFile("sorted.txt");
 	container* c = new container,* first;
-	c->In(ifst);
+	c->In(inputFile);
 	first = c;
 	c->Sort();
 	EXPECT_TRUE(c->GetPlant()->GetName() == "tewte" || c->GetPlant()->GetName() == "Toomoo");
@@ -115,10 +115,10 @@ TEST(sort_container, sorted_container)
 }
 TEST(sort_container, one_element_container)
 {
-	ifstream ifst("one_sort.txt");
+	ifstream inputFile("one_sort.txt");
 	container* c = new container,*first;
 	first=c;
-	c->In(ifst);
+	c->In(inputFile);
 	c->Sort();
 	EXPECT_TRUE(c->GetPlant()->GetName() == "tewte" || c->GetPlant()->GetName() == "Toomoo");
 	c = c->GetNext();
@@ -135,56 +135,56 @@ TEST(sort_container, empty_container)
 }
 TEST(consonant,no_consonants)
 {
-	ofstream ofst("trash.txt");
+	ofstream outputFile("trash.txt");
 	plant* p = plant::In(ifstream("no_consonants.txt"));
-	EXPECT_EQ(p->consonant(),0);
+	EXPECT_EQ(p->Consonant(),0);
 }
 TEST(consonant,all_consonants)
 {
-	ofstream ofst("trash.txt");
+	ofstream outputFile("trash.txt");
 	plant* p = plant::In(ifstream("all_consonants.txt"));
-	EXPECT_EQ(p->consonant(),40);
+	EXPECT_EQ(p->Consonant(),40);
 }/*
 TEST(consonant,empty_string)
 {
-	ofstream ofst("trash.txt");
+	ofstream outputFile("trash.txt");
 	plant* p = plant::In(ifstream("empty_string.txt"));
-	EXPECT_EQ(p->consonant(),0);
+	EXPECT_EQ(p->Consonant(),0);
 }*/
 TEST(consonant,orchid)
 {
-	ofstream ofst("trash.txt");
+	ofstream outputFile("trash.txt");
 	plant* p = plant::In(ifstream("orchid.txt"));
-	EXPECT_EQ(p->consonant(),5);
+	EXPECT_EQ(p->Consonant(),5);
 }
 
 TEST(plant_in,all_at_once)
 {
-	ifstream ifst("all_types.txt");
-	plant* p = plant::In(ifst);
+	ifstream inputFile("all_types.txt");
+	plant* p = plant::In(inputFile);
 	EXPECT_TRUE(p->GetHabitat() == FOREST);
 	EXPECT_TRUE(p->GetName() == "Toomoo");
-	p = plant::In(ifst);
+	p = plant::In(inputFile);
 	EXPECT_TRUE(p->GetHabitat() == FOREST);
 	EXPECT_TRUE(p->GetName() == "tewte");
-	p = plant::In(ifst);
+	p = plant::In(inputFile);
 	EXPECT_TRUE(p->GetHabitat() == JUNGLE);
 	EXPECT_TRUE(p->GetName() == "Za-Bor");
 }
 
 TEST(output_container,empty)
 {
-	ofstream ofst("trash.txt");
+	ofstream outputFile("trash.txt");
 	container* c = new container;
-	c->Out(ofst);
+	c->Out(outputFile);
 	c->Clear();
 }
 TEST(output_container,nonempty)
 {
-	ofstream ofst("trash.txt");
+	ofstream outputFile("trash.txt");
 	container* c = new container,*first;
 	c->In(ifstream("sorted.txt"));
-	c->Out(ofst);
+	c->Out(outputFile);
 	c->Clear();
 }
 
@@ -228,175 +228,175 @@ TEST(input_container,empty)
 
 TEST(input_tree,all_at_once)
 {
-	ifstream ifst("trees.txt");
+	ifstream inputFile("trees.txt");
 	tree* tr = new tree;
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE(tr->GetAge() == 2000000000000000);
 	EXPECT_TRUE(tr->GetName() == "Gnav-ov-Stryka");
 	EXPECT_TRUE(tr->GetHabitat() == FOREST);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE(tr->GetAge()== 55555);
 	EXPECT_TRUE(tr->GetName() == "Kyr-Lun-Borgor");
 	EXPECT_TRUE(tr->GetHabitat() == FIELD);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE(tr->GetAge() == 55555);
 	EXPECT_TRUE(tr->GetName() == "Kyr-Lun-Borgor");
 	EXPECT_TRUE(tr->GetHabitat() == DESERT);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE(tr->GetAge() == 55555);
 	EXPECT_TRUE(tr->GetName() == "Kyr-Lun-Borgor");
 	EXPECT_TRUE(tr->GetHabitat() == TUNDRA);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE(tr->GetAge() == 1337);
 	EXPECT_TRUE(tr->GetName() == "Za-Bor");
 	EXPECT_TRUE(tr->GetHabitat() == JUNGLE);
 }
 TEST(input_bush,all_at_once)
 {
-	ifstream ifst("bushes.txt");
+	ifstream inputFile("bushes.txt");
 	bush* tr = new bush;
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 4);
 	EXPECT_TRUE(tr->GetName() == "Poomoo");
 	EXPECT_TRUE(tr->GetHabitat() == FOREST);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 0);
 	EXPECT_TRUE(tr->GetName() == "Nyeea");
 	EXPECT_TRUE(tr->GetHabitat() == FIELD);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 1);
 	EXPECT_TRUE(tr->GetName() == "Hoozooa");
 	EXPECT_TRUE(tr->GetHabitat() == DESERT);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 2);
 	EXPECT_TRUE(tr->GetName() == "Shoom");
 	EXPECT_TRUE(tr->GetHabitat() == TUNDRA);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 3);
 	EXPECT_TRUE(tr->GetName() == "BushNumba4");
 	EXPECT_TRUE(tr->GetHabitat() == JUNGLE);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 5);
 	EXPECT_TRUE(tr->GetName() == "BushNumba4");
 	EXPECT_TRUE(tr->GetHabitat() == JUNGLE);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 6);
 	EXPECT_TRUE(tr->GetName() == "BushNumba4");
 	EXPECT_TRUE(tr->GetHabitat()== JUNGLE);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 7);
 	EXPECT_TRUE(tr->GetName() == "BushNumba4");
 	EXPECT_TRUE(tr->GetHabitat() == JUNGLE);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 8);
 	EXPECT_TRUE(tr->GetName() == "BushNumba4");
 	EXPECT_TRUE(tr->GetHabitat() == JUNGLE);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 9);
 	EXPECT_TRUE(tr->GetName() == "BushNumba4");
 	EXPECT_TRUE(tr->GetHabitat() == JUNGLE);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 10);
 	EXPECT_TRUE(tr->GetName() == "BushNumba4");
 	EXPECT_TRUE(tr->GetHabitat() == JUNGLE);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE((int)tr->GetBlooming() == 11);
 	EXPECT_TRUE(tr->GetName() == "BushNumba4");
 	EXPECT_TRUE(tr->GetHabitat() == JUNGLE);
 }
 TEST(input_flower,all_at_once)
 {
-	ifstream ifst("flowers.txt");
+	ifstream inputFile("flowers.txt");
 	flower* tr = new flower;
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE(tr->GetType() == 1);
 	EXPECT_TRUE(tr->GetName() == "tewte");
 	EXPECT_TRUE(tr->GetHabitat() == FOREST);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE(tr->GetType() == 0);
 	EXPECT_TRUE(tr->GetName() == "Flower1");
 	EXPECT_TRUE(tr->GetHabitat() == FIELD);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE(tr->GetType() == 2);
 	EXPECT_TRUE(tr->GetName() == "Flower2");
 	EXPECT_TRUE(tr->GetHabitat() == DESERT);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE(tr->GetType() == 3);
 	EXPECT_TRUE(tr->GetName() == "Flower3");
 	EXPECT_TRUE(tr->GetHabitat() == TUNDRA);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	EXPECT_TRUE(tr->GetType() == 3);
 	EXPECT_TRUE(tr->GetName() == "Flower3");
 	EXPECT_TRUE(tr->GetHabitat() == JUNGLE);
 }
 TEST(output_bush,all_at_once)
 {
-	ifstream ifst("bushes.txt");
+	ifstream inputFile("bushes.txt");
 	bush* b = new bush;
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
 }
 TEST(output_tree,all_at_once)
 {
 	tree* b = new tree;
-	ifstream ifst("trees.txt");
-	b->InData(ifst);
+	ifstream inputFile("trees.txt");
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
 }
 TEST(output_flower,all_at_once)
 {
 	flower* b = new flower;
-	ifstream ifst("flowers.txt");
-	b->InData(ifst);
+	ifstream inputFile("flowers.txt");
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
-	b->InData(ifst);
+	b->InData(inputFile);
 	b->Out(ofstream("trash.txt"));
 }
 TEST(output_plant,all_at_once)
 {
 	plant* pl;
-	ifstream ifst("sort_reverse.txt");
-	pl = plant::In(ifst);
+	ifstream inputFile("sort_reverse.txt");
+	pl = plant::In(inputFile);
 	pl->Out(ofstream("trash.txt"));
-	pl = plant::In(ifst);
+	pl = plant::In(inputFile);
 	pl->Out(ofstream("trash.txt"));
-	pl = plant::In(ifst);
+	pl = plant::In(inputFile);
 	pl->Out(ofstream("trash.txt"));
 }
 
@@ -426,18 +426,18 @@ TEST(output_trees_only,mixed)
 }
 TEST(trees_only,all)
 {
-	ifstream ifst("trees.txt");
+	ifstream inputFile("trees.txt");
 	int cnt = 0;
 	tree* tr = new tree;
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	tr->OutTree(ofstream("trash.txt"),cnt);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	tr->OutTree(ofstream("trash.txt"),cnt);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	tr->OutTree(ofstream("trash.txt"),cnt);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	tr->OutTree(ofstream("trash.txt"),cnt);
-	tr->InData(ifst);
+	tr->InData(inputFile);
 	tr->OutTree(ofstream("trash.txt"),cnt);
 }
 /*
