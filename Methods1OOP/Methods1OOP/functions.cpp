@@ -333,6 +333,13 @@ hab plant::GetHabitat()
 {
 	return habitat;
 }
+/*bool plant::compare(plant* pl1, plant* pl2)
+{
+	int i1 = pl1->GetHabitat();
+	int i2 = pl2->GetHabitat();
+	return (i1 > i2 );
+}
+if you want to change a sorting condition, it won't be necessary to change sorting but just the special function*/
 void container::Sort()
 {
 	container* start = this;
@@ -344,7 +351,7 @@ void container::Sort()
 		{
 			int i1 = cur->pl->GetHabitat();
 			int i2 = cur->next->pl->GetHabitat();
-			if(i1 > i2 )
+			if(i1 > i2 )/*if (compare( cur->pl, cur->next->pl))*/
 			{
 				plant* buf;
 				buf = cur->pl;

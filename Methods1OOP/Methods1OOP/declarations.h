@@ -6,6 +6,7 @@
 using namespace std;
 enum hab{FOREST,FIELD,DESERT,TUNDRA,JUNGLE};
 enum key{TREE,BUSH,FLOWER};
+/*(1)*/
 class plant
 {
 protected:
@@ -33,6 +34,8 @@ class bush : public plant
 {
 private:
 	enum month {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
+	/*month m;
+	//It's better to replace that enum in string (1)*/
 	month blooming;
 public:
 	void InData(ifstream &ifst);
@@ -43,12 +46,26 @@ class flower : public plant
 {
 private:
 	enum habita{DOMESTIC, WILD, GARDEN, BED};
+	/*habita h;
+	//It's better to replace that enum in string after (1)*/
 	habita type;
 public:
 	void InData(ifstream &ifst);
 	void Out(ofstream &ofst);
 	flower() {}
 };
+/*class node
+{
+public: 
+	plant *pl;
+	node *next;
+}
+class container
+{
+private:
+	node *cont;
+	int len;
+...*/
 class container
 {
 private:
